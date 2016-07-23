@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>97b43377-15d2-45f7-8daa-c4ad83914422</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FsTestApplication</RootNamespace>
+    <AssemblyName>FsTestApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
+    <Name>FsXamlTestApplication</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\FsTestApplication.XML</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Release\FsTestApplication.XML</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="App.config" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog">
+      <HintPath>..\..\..\packages\Serilog.2.0.0\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx">
+      <HintPath>..\..\..\packages\Serilog.1.5.14\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\..\packages\System.Reactive.Core.3.0.0\lib\net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\..\packages\System.Reactive.Interfaces.3.0.0\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\..\..\packages\System.Reactive.Windows.Threading.3.0.0\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Avalonia.Animation\Avalonia.Animation.csproj">
+      <Name>Avalonia.Animation</Name>
+      <Project>{d211e587-d8bc-45b9-95a4-f297c8fa5200}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Base\Avalonia.Base.csproj">
+      <Name>Avalonia.Base</Name>
+      <Project>{b09b78d8-9b26-48b0-9149-d64a2f120f3f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Controls\Avalonia.Controls.csproj">
+      <Name>Avalonia.Controls</Name>
+      <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Diagnostics\Avalonia.Diagnostics.csproj">
+      <Name>Avalonia.Diagnostics</Name>
+      <Project>{7062ae20-5dcc-4442-9645-8195bdece63e}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Input\Avalonia.Input.csproj">
+      <Name>Avalonia.Input</Name>
+      <Project>{62024b2d-53eb-4638-b26b-85eeaa54866e}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Logging.Serilog\Avalonia.Logging.Serilog.csproj">
+      <Name>Avalonia.Logging.Serilog</Name>
+      <Project>{b61b66a3-b82d-4875-8001-89d3394fe0c9}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.ReactiveUI\Avalonia.ReactiveUI.csproj">
+      <Name>Avalonia.ReactiveUI</Name>
+      <Project>{6417b24e-49c2-4985-8db2-3ab9d898ec91}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Styling\Avalonia.Styling.csproj">
+      <Name>Avalonia.Styling</Name>
+      <Project>{f1baa01a-f176-4c6a-b39d-5b40bb1b148f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Avalonia.Themes.Default\Avalonia.Themes.Default.csproj">
+      <Name>Avalonia.Themes.Default</Name>
+      <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Gtk\Avalonia.Cairo\Avalonia.Cairo.csproj">
+      <Name>Avalonia.Cairo</Name>
+      <Project>{fb05ac90-89ba-4f2f-a924-f37875fb547c}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Gtk\Avalonia.Gtk\Avalonia.Gtk.csproj">
+      <Name>Avalonia.Gtk</Name>
+      <Project>{54f237d5-a70a-4752-9656-0c70b1a7b047}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Markup\Avalonia.Markup.Xaml\Avalonia.Markup.Xaml.csproj">
+      <Name>Avalonia.Markup.Xaml</Name>
+      <Project>{3e53a01a-b331-47f3-b828-4a5717e77a24}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Markup\Avalonia.Markup\Avalonia.Markup.csproj">
+      <Name>Avalonia.Markup</Name>
+      <Project>{6417e941-21bc-467b-a771-0de389353ce6}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Skia\Avalonia.Skia.Desktop\Avalonia.Skia.Desktop.csproj">
+      <Name>Avalonia.Skia.Desktop</Name>
+      <Project>{925dd807-b651-475f-9f7c-cbeb974ce43d}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Windows\Avalonia.Direct2D1\Avalonia.Direct2D1.csproj">
+      <Name>Avalonia.Direct2D1</Name>
+      <Project>{3e908f67-5543-4879-a1dc-08eace79b3cd}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Windows\Avalonia.Win32\Avalonia.Win32.csproj">
+      <Name>Avalonia.Win32</Name>
+      <Project>{811a76cf-1cf6-440f-963b-bbe31bd72a82}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XamlTestApplicationPcl\XamlTestApplicationPcl.csproj">
+      <Name>XamlTestApplicationPcl</Name>
+      <Project>{ea113f1a-d8d7-4142-9948-353270e7ebae}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
